@@ -22,25 +22,16 @@ namespace OfficeBatchProcess
 
     public sealed class BatchConfig
     {
-
-        private static BatchConfigSection _config;
-
         static BatchConfig()
         {
-            _config = ((BatchConfigSection)(global::System.Configuration.ConfigurationManager.GetSection("BatchConfig")));
+            Config = ((BatchConfigSection)(global::System.Configuration.ConfigurationManager.GetSection("BatchConfig")));
         }
 
         private BatchConfig()
         {
         }
 
-        public static BatchConfigSection Config
-        {
-            get
-            {
-                return _config;
-            }
-        }
+        public static BatchConfigSection Config { get; private set; }
     }
 
     public sealed partial class BatchConfigSection : System.Configuration.ConfigurationSection

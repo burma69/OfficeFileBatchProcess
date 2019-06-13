@@ -73,7 +73,7 @@ namespace OfficeBatchProcess
             // First, process all the files directly under this folder 
             try
             {
-                files = (System.IO.FileInfo[])root.GetFiles("*.*").Where(s => s.Name.EndsWith(".xlsx")).ToArray();
+                files = (System.IO.FileInfo[])root.GetFiles("*.*").Where(s => s.Name.EndsWith(".xlsx") || s.Name.EndsWith(".docx")).ToArray();
             }
             // This is thrown if even one of the files requires permissions greater 
             // than the application provides. 
@@ -96,7 +96,7 @@ namespace OfficeBatchProcess
                 {
                     string DestFileName = DestDirectory + fi.FullName.Substring(fi.FullName.IndexOf(SourceDirectory) + SourceDirectory.Length);
 
-                    DestFileName = DestFileName.Substring(0, DestFileName.LastIndexOf(".")) + ".xlsx";
+                    //DestFileName = DestFileName.Substring(0, DestFileName.LastIndexOf(".")) + ".xlsx";
 
                     if (File.Exists(DestFileName))
                     {
